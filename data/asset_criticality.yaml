@@ -1,0 +1,11 @@
+# Business-defined asset criticality tiers.
+#
+# `default` is used for any asset_id not explicitly listed below.
+# Valid tiers: critical | high | medium | low
+default: medium
+
+assets:
+  db-prod-01: critical          # production database - customer PII
+  web-prod-03: high             # public-facing production web app
+  internal-tool-07: low         # internal-only tool, no external exposure
+  "webapp-backend:2.3.1": high  # customer-facing backend service (container image)
