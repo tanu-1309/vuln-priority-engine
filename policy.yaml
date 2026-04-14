@@ -1,0 +1,50 @@
+# vuln-priority-engine risk-scoring policy
+#
+# This file is the single source of truth for "what counts as critical".
+# Change it to retune prioritization without touching code. See
+# app/scoring.py for how each field below is consumed, and the README's
+# "How it works" section for the full formula.
+
+# --- Scoring weights -------------------------------------------------------
+# Each signal is normalized to a 0-100 scale, then combined as a weighted
+# sum. Weights don't have to sum to exactly 1.0, but keeping them there
+# makes the resulting risk_score land on a familiar 0-100 scale.
+weights:
+  cvss: 0.35        # weight on the CVSS base score (severity of the flaw itself)
+  epss: 0.35        # weight on EPSS (probability it gets exploited in the wild in the next 30 days)
+  kev: 0.20         # weight on the binary "is this being actively exploited right now" signal
+  asset_criticality: 0.10   # weight on how important the affected asset is to the business
+
+# --- Asset criticality weighting -------------------------------------------
+# Maps each AssetCriticality tier to a 0-100 contribution before the
+# `asset_criticality` weight above is applied.
+asset_criticality_scores:
+  critical: 100
+  high: 75
+  medium: 50
+  low: 25
+
+# --- KEV override -----------------------------------------------------------
+# If true, any CVE listed in the CISA Known Exploited Vulnerabilities
+# catalog is force-bucketed as "critical" regardless of computed
+# risk_score. This reflects real security practice: an actively
+# exploited CVE is a fire drill even if its CVSS/asset context is modest.
+force_critical_on_kev: true
+
+# --- Priority buckets & SLA ---------------------------------------------
+# Evaluated top-to-bottom; the first bucket whose `min_score` the finding's
+# risk_score meets or exceeds wins. `sla_days` is the remediation deadline
+# (discovered_at + sla_days) attached to findings in that bucket.
+buckets:
+  - name: critical
+    min_score: 80
+    sla_days: 7
+  - name: high
+    min_score: 60
+    sla_days: 30
+  - name: medium
+    min_score: 40
+    sla_days: 90
+  - name: low
+    min_score: 0
+    sla_days: 180

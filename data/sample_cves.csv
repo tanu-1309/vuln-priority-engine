@@ -1,0 +1,8 @@
+asset_id,cve_id,severity,cvss_score,package,installed_version,fixed_version,discovered_at,title
+db-prod-01,CVE-2019-0708,CRITICAL,9.8,rdp-service,unpatched,ms-patch-2019-05,2024-01-15,BlueKeep RDP Remote Code Execution
+web-prod-03,CVE-2021-44228,CRITICAL,10.0,log4j,2.14.1,2.17.1,2024-02-01,Log4Shell JNDI Remote Code Execution
+web-prod-03,CVE-2023-38831,HIGH,7.8,winrar,6.22,6.23,2024-03-10,WinRAR crafted archive code execution
+internal-tool-07,CVE-2020-1234,MEDIUM,5.5,legacy-lib,1.0.0,1.1.0,2024-01-20,Legacy library input validation issue (sample fixture)
+internal-tool-07,N/A,LOW,,misc-tool,,,2024-01-01,Non-CVE finding - must be skipped by adapter
+internal-tool-07,INVALID-ID,LOW,,misc-tool,,,2024-01-01,Malformed identifier - must be skipped by adapter
+db-prod-01,CVE-2024-5555,LOW,,internal-service,,,2024-04-01,Finding with no CVSS score supplied by scanner

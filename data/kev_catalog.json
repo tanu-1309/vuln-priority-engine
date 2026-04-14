@@ -1,0 +1,41 @@
+{
+  "title": "CISA Catalog of Known Exploited Vulnerabilities (bundled sample subset for offline testing)",
+  "catalogVersion": "2024.03.01",
+  "dateReleased": "2024-03-01T00:00:00.0000Z",
+  "count": 3,
+  "vulnerabilities": [
+    {
+      "cveID": "CVE-2023-4863",
+      "vendorProject": "Google",
+      "product": "Chrome / libwebp",
+      "vulnerabilityName": "Google Chromium libwebp Heap Buffer Overflow Vulnerability",
+      "dateAdded": "2023-09-27",
+      "shortDescription": "libwebp, as used in Chromium and many other products, contains a heap buffer overflow that allows an attacker to perform an out-of-bounds memory write via a crafted HTML page.",
+      "requiredAction": "Apply mitigations per vendor instructions or discontinue use of the product if mitigations are unavailable.",
+      "dueDate": "2023-10-18",
+      "knownRansomwareCampaignUse": "Unknown"
+    },
+    {
+      "cveID": "CVE-2021-44228",
+      "vendorProject": "Apache",
+      "product": "Log4j2",
+      "vulnerabilityName": "Apache Log4j2 Remote Code Execution Vulnerability",
+      "dateAdded": "2021-12-10",
+      "shortDescription": "Apache Log4j2 JNDI features used in configuration, log messages, and parameters do not protect against attacker-controlled LDAP and other JNDI related endpoints, enabling remote code execution.",
+      "requiredAction": "Apply updates per vendor instructions.",
+      "dueDate": "2021-12-24",
+      "knownRansomwareCampaignUse": "Known"
+    },
+    {
+      "cveID": "CVE-2019-0708",
+      "vendorProject": "Microsoft",
+      "product": "Windows Remote Desktop Services",
+      "vulnerabilityName": "Microsoft Windows Remote Desktop Services Remote Code Execution Vulnerability (BlueKeep)",
+      "dateAdded": "2020-01-08",
+      "shortDescription": "Microsoft Windows Remote Desktop Services contains a remote code execution vulnerability that allows unauthenticated attackers to connect via RDP and send specially crafted requests.",
+      "requiredAction": "Apply updates per vendor instructions.",
+      "dueDate": "2020-01-22",
+      "knownRansomwareCampaignUse": "Known"
+    }
+  ]
+}
